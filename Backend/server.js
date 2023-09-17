@@ -1,4 +1,6 @@
 const express = require("express");
+const { connection } = require("./config/db");
+const cors = require("cors");
 
 
 
@@ -14,6 +16,12 @@ app.get("/",(req,res)=>{
 
 
 
-app.listen(8080,()=>{
+app.listen(8080,async()=>{
+    try {
+        await connection;
+        console.log("Connected to DB!")
+    } catch (error) {
+        console.log(error.message);
+    }
     console.log("Server is Started!");
 })
