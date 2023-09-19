@@ -1,6 +1,7 @@
 const express = require("express");
 const { connection } = require("./config/db");
 const cors = require("cors");
+const { userRouter } = require("./routes/userRouter");
 
 
 
@@ -11,6 +12,9 @@ app.use(cors());
 app.get("/",(req,res)=>{
     res.status(200).send({msg:"Welcome to Finest Shave Backend!"})
 })
+
+app.use("/user",userRouter);
+
 
 
 
